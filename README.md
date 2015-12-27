@@ -14,7 +14,8 @@ Good luck!
 The GettingandCleaningDataCourseProject repo contains:
 -	run_analysis.R script
 -	a codebook 
--	a README file.
+-	a README file
+-	final produced data in the FinalTidyData.txt file.
 
 #### The Data
 
