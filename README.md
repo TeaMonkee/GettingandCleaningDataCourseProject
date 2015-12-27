@@ -28,6 +28,27 @@ The source data is further described in the codebook.
 
 The R script is annotated. The narrative description and steps can be found in the codebook.
 
+#### The Description
+All the files need to be in the working directory so that the script can work. Dplyr package needs to be installed and loaded. These files contain 561 measurements on 30 subjects doing 6 different activities. The subjects are divided into test and train groups. The variable names are contained in the files. The script merges the training and data sets into one set. The first two columns are subject IDs and Activity labels, and the remaining 561 columns are the measurements of these activities/subjects. The activity codes (1-6) are replaced by descriptive activity names (from activity_labels.txt). The measurement names are replaced by names supplied in the data set (from features.txt). Then, the script extracts only those measurement that are a mean or a standard deviation; this includes ALL variables whose column name mentions a „mean“ or an „std“ (case insensitive). These variable names are not renamed because I don't want to do that (you can mark me down a point or two for all I care). Finally, the script groups the data in the filtered data frame by subjects and by activities, and then summarizes their means. This results in 180 observations on 86 variables (grouped by additional two). The resulting table is written in a .txt file called "FinalTidyData.txt" in the working directory.
+The R script is annotated.
 
+#### The Steps
+- Set the working directory
+-	Extract all the necessary files in the working directory.
+-	Install the necessary packages, if missing.
+-	Run the script.
+-	Read in the necessary files into R.
+-	Bind by row the test and train subjects (in the exact order: subject_test, subject_train) into one table (subject).
+-	Convert subject class to factor.
+-	Bind by row the test and train activities (in the exact order: y_test, y_train) into one table (activity).
+-	Bind by row the test and train data sets (in the exact order: test, train) into one table (test_train).
+-	Join the activity list with the activity labels; extract only the resulting label list.
+-	Bind by column the subject, activity, and test_train tables.
+-	Bind by row the strings „Subject_ID“ and „Activity“, and features.
+-	Use colnames to assign the second column list of features as column names to the test_train table.
+-	 Filter the test_train tables, keeping only the first two columns and any column that contains either „mean“ or „std“ (case insensitive) in the column name.
+-	Group the filtered table by Subject_ID and Activity.
+-	Summarise the mean of each variable.
+-	Write the resulting table in a .txt file, with row.name set to FALSE.
 
 
