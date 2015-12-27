@@ -20,17 +20,8 @@ The GettingandCleaningDataCourseProject repo contains:
 
 The data cleaned up by the script is described here: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
 (For reference, see: Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine. International Workshop of Ambient Assisted Living (IWAAL 2012). Vitoria-Gasteiz, Spain. Dec 2012 This dataset is distributed AS-IS and no responsibility implied or explicit can be addressed to the authors or their institutions for its use or misuse. Any commercial use is prohibited. Jorge L. Reyes-Ortiz, Alessandro Ghio, Luca Oneto, Davide Anguita. November 2012.)
-The script reads in the data from files downloaded from here: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip The files needed to be read-in the script:
--	X_test.txt  - the test data set.
--	X_train.txt - the training data set.
--	y_test.txt - labels for the test data set.
--	y_train.txt - labels for the training data set.
--	subject_test.txt - IDs the test subject who performed the activity for each window sample. 
--	subject_train.txt - IDs the train subject who performed the activity for each window sample.
--	activity_labels.txt - lists the activities with the assigned labels.
--	features.txt. – lists all the features.
-Additionally, the features_info.txt and README.txt explain the data set and the variables.
-The variables are listed in the codebook. 
+
+The source data is further described in the codebook.
 
 #### The Description
 All the files need to be in the working directory so that the script can work. Dplyr package needs to be installed and loaded.
@@ -40,25 +31,8 @@ Then, the script extracts only those measurement that are a mean or a standard d
 Finally, the script groups the data in the filtered data frame by subjects and by activities, and then summarizes their means. This results in 180 observations on 86 variables (grouped by additional two).
 The resulting table is written in a .txt file called "FinalTidyData.txt" in the working directory. 
 
-The R script is annotated.
+The R script is annotated. The steps can be found in the codebook
 
-#### The Steps
-- Set the working directory
--	Extract all the necessary files in the working directory.
--	Install the necessary packages, if missing.
--	Run the script.
--	Read in the necessary files into R.
--	Bind by row the test and train subjects (in the exact order: subject_test, subject_train) into one table (subject).
--	Convert subject class to factor.
--	Bind by row the test and train activities (in the exact order: y_test, y_train) into one table (activity).
--	Bind by row the test and train data sets (in the exact order: test, train) into one table (test_train).
--	Join the activity list with the activity labels; extract only the resulting label list.
--	Bind by column the subject, activity, and test_train tables.
--	Bind by row the strings „Subject_ID“ and „Activity“, and features.
--	Use colnames to assign the second column list of features as column names to the test_train table.
--	 Filter the test_train tables, keeping only the first two columns and any column that contains either „mean“ or „std“ (case insensitive) in the column name.
--	Group the filtered table by Subject_ID and Activity.
--	Summarise the mean of each variable.
--	Write the resulting table in a .txt file, with row.name set to FALSE.
+
 
 
